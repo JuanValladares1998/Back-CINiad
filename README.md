@@ -32,7 +32,7 @@ Tablas: `terapias`, `programas`, `talleres`, `actividades`, `recursos`.
 - `PUT /{tabla}/{id}` — Actualiza; si envías `file`, reemplaza el anterior y borra el viejo archivo.
 - `DELETE /{tabla}/{id}` — Elimina registro y su archivo asociado.
 
-`media_url` devuelto apunta a `/media/<archivo>`; se puede consumir directo desde el frontend.
+`media_url` apunta a la versión normal (WebP, máx 1600px) y `media_card_url` a la versión reducida para cards (WebP, máx 480px). Se consumen desde `/media/<archivo>`.
 
 ## Ejemplos rápidos con curl
 ```bash
