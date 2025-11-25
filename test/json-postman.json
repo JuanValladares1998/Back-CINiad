@@ -1,0 +1,634 @@
+{
+    "info": {
+        "_postman_id": "2f3e2718-49f5-4e0e-9e21-9b68d1c131c0",
+        "name": "Back-CINiad API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8000"
+        },
+        {
+            "key": "itemId",
+            "value": "1"
+        }
+    ],
+    "item": [
+        {
+            "name": "Terapias",
+            "item": [
+                {
+                    "name": "Crear terapia",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Terapia de prueba",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion breve",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/imagen.jpg"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/terapias",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "terapias"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar terapias",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/terapias",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "terapias"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener terapia",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/terapias/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "terapias",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar terapia",
+                    "request": {
+                        "method": "PUT",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Terapia editada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion actualizada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/nueva_imagen.jpg"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/terapias/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "terapias",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar terapia",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/terapias/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "terapias",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Programas",
+            "item": [
+                {
+                    "name": "Crear programa",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Programa de prueba",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion breve",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/video.mp4"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/programas",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "programas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar programas",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/programas",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "programas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener programa",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/programas/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "programas",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar programa",
+                    "request": {
+                        "method": "PUT",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Programa editado",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion actualizada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/nuevo_video.mp4"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/programas/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "programas",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar programa",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/programas/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "programas",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Talleres",
+            "item": [
+                {
+                    "name": "Crear taller",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Taller de prueba",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion breve",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/imagen.jpg"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/talleres",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "talleres"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar talleres",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/talleres",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "talleres"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener taller",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/talleres/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "talleres",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar taller",
+                    "request": {
+                        "method": "PUT",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Taller editado",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion actualizada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/nueva_imagen.jpg"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/talleres/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "talleres",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar taller",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/talleres/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "talleres",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Actividades",
+            "item": [
+                {
+                    "name": "Crear actividad",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Actividad de prueba",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion breve",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/imagen.jpg"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/actividades",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "actividades"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar actividades",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/actividades",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "actividades"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener actividad",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/actividades/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "actividades",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar actividad",
+                    "request": {
+                        "method": "PUT",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Actividad editada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion actualizada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/nueva_imagen.jpg"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/actividades/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "actividades",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar actividad",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/actividades/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "actividades",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Recursos",
+            "item": [
+                {
+                    "name": "Crear recurso",
+                    "request": {
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Recurso de prueba",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion breve",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/archivo.pdf"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/recursos",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "recursos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar recursos",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/recursos",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "recursos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener recurso",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/recursos/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "recursos",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar recurso",
+                    "request": {
+                        "method": "PUT",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "nombre",
+                                    "value": "Recurso editado",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "descripcion",
+                                    "value": "Descripcion actualizada",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/ruta/a/nuevo_archivo.pdf"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/recursos/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "recursos",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar recurso",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/recursos/{{itemId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "recursos",
+                                "{{itemId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

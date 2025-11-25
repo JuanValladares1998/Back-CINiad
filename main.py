@@ -91,6 +91,16 @@ def save_file(file: UploadFile) -> tuple[str, str, str]:
     return media_url, media_tipo, file.filename
 
 
+def remove_media_file(media_url: Optional[str]) -> None:
+    """Elimina el archivo fisico asociado a un media_url (si existe)."""
+    if not media_url:
+        return
+    filename = Path(media_url).name
+    path = MEDIA_ROOT / filename
+    if path.exists():
+        path.unlink()
+
+
 def create_item(model: Type[BaseItem], nombre: str, descripcion: str, file: UploadFile | None):
     media_url = media_tipo = media_nombre = None
     if file:
@@ -122,6 +132,35 @@ def get_item(model: Type[BaseItem], item_id: int):
         return result
 
 
+def update_item(model: Type[BaseItem], item_id: int, nombre: str, descripcion: str, file: UploadFile | None):
+    with Session(engine) as session:
+        obj = session.get(model, item_id)
+        if not obj:
+            raise HTTPException(status_code=404, detail="Recurso no encontrado")
+        if file:
+            remove_media_file(obj.media_url)
+            media_url, media_tipo, media_nombre = save_file(file)
+            obj.media_url = media_url
+            obj.media_tipo = media_tipo
+            obj.media_nombre = media_nombre
+        obj.nombre = nombre
+        obj.descripcion = descripcion or None
+        session.add(obj)
+        session.commit()
+        session.refresh(obj)
+        return obj
+
+
+def delete_item(model: Type[BaseItem], item_id: int):
+    with Session(engine) as session:
+        obj = session.get(model, item_id)
+        if not obj:
+            raise HTTPException(status_code=404, detail="Recurso no encontrado")
+        remove_media_file(obj.media_url)
+        session.delete(obj)
+        session.commit()
+
+
 def build_router(model: Type[BaseItem], prefix: str) -> APIRouter:
     router = APIRouter(prefix=f"/{prefix}", tags=[prefix.capitalize()])
 
@@ -143,6 +182,22 @@ def build_router(model: Type[BaseItem], prefix: str) -> APIRouter:
     @router.get("/{item_id}", response_model=model)
     def retrieve(item_id: int):
         return get_item(model, item_id)
+
+    # Actualizar registro (reemplaza archivo si se envia uno nuevo)
+    @router.put("/{item_id}", response_model=model)
+    async def update(
+        item_id: int,
+        nombre: str = Form(...),
+        descripcion: str = Form(""),
+        file: UploadFile | None = File(None),
+    ):
+        return update_item(model, item_id, nombre, descripcion, file)
+
+    # Eliminar registro y su archivo asociado
+    @router.delete("/{item_id}", status_code=204)
+    def delete(item_id: int):
+        delete_item(model, item_id)
+        return None
 
     return router
 
