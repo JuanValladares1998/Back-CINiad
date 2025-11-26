@@ -59,3 +59,25 @@ curl -X DELETE http://127.0.0.1:8000/recursos/1
 - CORS está abierto (`*`) para facilitar integración con cualquier frontend.
 - En producción, cambia `DATABASE_URL` en `main.py` a Postgres y sirve `/media` con Nginx/CDN.
 - Tamaño y tipo de archivo se validan por extensión; añade validaciones extra si lo necesitas.***
+
+## Autenticación (JWT)
+- Endpoints nuevos:
+  - `POST /auth/register` con cuerpo JSON `{"username": "...", "password": "..."}`.
+  - `POST /auth/login` (form-data u `application/x-www-form-urlencoded`) con `username` y `password` devuelve `access_token` tipo Bearer.
+- Solo usuarios autenticados pueden hacer `POST`, `PUT` o `DELETE` en las tablas; `GET` sigue abierto.
+- Usa el header `Authorization: Bearer <token>` en las peticiones protegidas.
+- Ejemplo rápido:
+  ```bash
+  # Registrar
+  curl -X POST http://127.0.0.1:8000/auth/register \
+    -H "Content-Type: application/json" \
+    -d '{"username":"admin","password":"123456"}'
+
+  # Login
+  TOKEN=$(curl -X POST http://127.0.0.1:8000/auth/login -d "username=admin&password=123456" -d "grant_type=" | jq -r .access_token)
+
+  # Crear recurso protegido
+  curl -X POST http://127.0.0.1:8000/terapias \
+    -H "Authorization: Bearer $TOKEN" \
+    -F "nombre=Terapia segura"
+  ```

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from auth import auth_router
 from config import APP_TITLE, MEDIA_ROOT
 from db import init_db
 from models import Actividad, Programa, Recurso, Taller, Terapia
@@ -27,6 +28,7 @@ def on_startup() -> None:
     init_db()
 
 
+app.include_router(auth_router)
 app.include_router(build_router(Terapia, "terapias"))
 app.include_router(build_router(Programa, "programas"))
 app.include_router(build_router(Taller, "talleres"))

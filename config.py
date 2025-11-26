@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Configuracion basica de rutas y base de datos
@@ -11,3 +12,8 @@ APP_TITLE = "Back-CINiad"
 # Anchos maximos para conversion de imagenes
 NORMAL_MAX_WIDTH = 1600
 CARD_MAX_WIDTH = 480
+
+# JWT settings
+SECRET_KEY = os.getenv("SECRET_KEY", "change-this-secret")
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
